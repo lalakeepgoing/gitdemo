@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="todo.css">
+    <script src="jquery-1.12.3.js"></script>
+    <script src="todo.js"></script>
+    <script>
+        
+       
+
+        $(function(){
+            load()
+            //点击侧边栏 添加current类 其余兄弟移除
+            $("#tabList li").click(function(){
+                $(this).addClass("current").siblings().removeClass("current");
+                //得到当前li的索引号 点击的第几个侧边栏
+                var index=$(this).index();
+                //让其他侧边栏的内容隐藏                
+                $(".tabPage .item").eq(index).show().siblings().hide();
+
+            })
+            //鼠标滑过正文勾选按钮框 变换img
+           
+            //按下回车 把完整数据存储到本地存储里面
+            $("#title").on("keydown",function(event){
+                if(event.keyCode===13){
+                    
+                    var local=getDate();
+                   //1.把local数组进行更新数据 最新的数据追加到local数组
+                    local.push({title:$(this).val(),done:false});
+                    //把这个数组local 存储给本地存储
+                    saveDate(local);     
+                    //2.将本地存储数据渲染加载到页面 加载到li
+                    load();
+                    //清空输入的input框值
+                    $("#title").val("");
+                    
+
+                    }
+                    
+            })
+          
+            //3. todolist删除操作
+            $("#todoList,#doneList").on("click","a",function(){
+                // 获取本地存储
+                var data=getDate();
+                // 修改数据
+                var index =$(this).attr("id");
+                
+                //删除
+                data.splice(index,1);
+                //在保存本地存储
+                saveDate(data);
+                //重新渲染页面
+                load()
+                
+            })
+            //4.正进行和已完成选项操作
+            $("#todoList").on("click",".buttonImg",function(){
+              //获取本地存储数据
+              var data=getDate();
+              //修改数据 让data里的done为ture
+              var index =$(this).siblings("a").attr("id");
+              data[index].done=true;
+              //点击变换图片
+              $(this).prop("src","./logimg/done.png"); 
+              //data[index].$(".buttonImg").$attr("src",'./logimg/done.png')
+              //保存本地存储
+              saveDate(data);
+              //重绘页面
+                load()
+             });
+
+             $("#doneList").on("click",".buttonImg",function(){
+              //获取本地存储数据
+              var data=getDate();
+              //修改数据 让data里的done为ture
+              var index =$(this).siblings("a").attr("id");
+              data[index].done=false;
+              //点击变换图片
+              $(this).prop("src","./logimg/circle.png"); 
+              //保存本地存储
+              saveDate(data);
+              //重绘页面
+                load()
+             })
+             
+             //修改正文li的内容 在保存到数据
+             $("#todoList,#doneList")
+           
+        })
+
+        
+        
+      
+    </script>
+</head>
+<body >
+    <!-- 侧边栏div -->
+    <div id="sideBar">
+
+        <!-- 标题 -->
+         <span class="label">ToDo List</span>
+         <!-- 分割线 -->
+         <p id="divider"></p>
+        <!-- 侧边栏list -->
+        <div id="tabList">
+            <ul>
+                <li class="current"><img src="logimg/sun.png" class="sideImg">我的一天</li>
+                <li><img src="logimg/fivestar.png" class="sideImg"> 重要</li>
+                <li><img src="logimg/finish.png" class="sideImg"> 已完成</li>
+            </ul>
+            
+        </div>
+        <div id="textCount">
+            正在进行<br><br>
+            &nbsp&nbsp&nbsp已完成
+        </div>
+        <div id="count">
+            <span id="todoCount"></span><br>
+            <span id="doneCount"></span>
+        </div>
+        
+
+        
+        
+   </div>
+   <!-- 正文页面3个 点击侧边栏切换 -->
+   <div class="tabPage">
+    <!-- 1。我的一天 页面 -->
+    <div class="item" style="display: block;">
+        <span class="put">
+            <input type="text" id="title" name="title" placeholder="开始添加你要做的事~" required="required" autocomplete="off" />
+        </span>
+        <ol id="todoList"></ol>
+    
+    </div> 
+    <!-- 2.重要页面页面 -->
+       <div  class="item">
+        重要
+
+       </div>
+    <!-- 3.已完成页面 -->
+    
+    <div class="item">
+      
+           <ul id="doneList"></ul>
+    </div>
+
+</div>
+
+    
+</body>
+</html>

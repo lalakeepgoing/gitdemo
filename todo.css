@@ -1,0 +1,196 @@
+*{
+    margin:0;
+    padding:0;
+}
+body{
+
+    background-color: rgb(31, 54, 102);
+    
+}
+/* 侧边栏样式 */
+#sideBar{
+    width:300px;
+    height: 100%;
+    position: fixed;
+    top:0;
+    background-color:rgb(255, 255, 255);
+    border-right: 1px solid rgb(230, 231, 235);
+    filter: drop-shadow(16px 16px 20px);
+}
+/* 分割线 */
+#divider{
+    width: 230px;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid rgb(162, 207, 207);
+}
+/* 标题 todolist */
+span.label{
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    
+font-size: 43px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: rgb(17, 44, 85);
+}
+/* 侧边栏图片 */
+.sideImg{
+    width: 18%;
+    margin: 4% 4% 0 8%;
+    vertical-align:-70%;
+}
+/* 正文按钮图片 */
+.buttonImg {
+    width: 6%;
+    vertical-align:-60%;
+}
+.deleteImg{
+    width: 4%;
+    vertical-align:-40%;
+    margin-left:33%;
+    
+}
+
+
+
+/* 侧边栏按钮样式 */
+#tabList li{
+    width: 300px;
+    height: 80px;
+    margin: 0 auto;
+    font-size: 24px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight:450;
+    color:  rgb(6, 26, 53);
+} 
+
+#tabList li:hover{
+    background-color: rgb(63, 110, 141);
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#tabList .current{
+    background-color: rgb(39, 75, 121);
+    cursor: pointer;
+    border-radius: 5px;
+}
+/* 正文div */
+.tabPage{
+    
+    width: 70%;
+    height: 100%;
+    margin-left: 300px;
+    
+    
+}
+/* input框样式 */
+#title{
+    
+    width:70%;
+    height:40%;
+    background:rgb(253, 253, 253);
+    cursor:text;
+    font-family:"arial";
+    font-size:14pt;
+    border: solid 3px rgb(46, 103, 129);
+    padding:0.5%;
+
+}
+#title::-webkit-input-placeholder { /* WebKit browsers 适配谷歌 */
+    color: #BDCADA;
+}
+#title:-moz-placeholder { /* Mozilla Firefox 4 to 18 适配火狐 */
+    color: #BDCADA;
+}
+#title::-moz-placeholder { /* Mozilla Firefox 19+ 适配火狐 */
+    color: #BDCADA;
+}
+#title:-ms-input-placeholder { /* Internet Explorer 10+  适配ie*/
+    color: #BDCADA;
+}
+
+    
+
+.item .put{
+    
+    
+    height: 100px;
+    display: block;
+    margin-top:3% ;
+    margin-left:8% ;
+    
+}
+/* 设置切换页面其他兄弟元素隐藏 */
+.item{
+    display: none;
+}
+/* 正文列表样式 */
+ol,ul {
+    padding: 0;
+    list-style: none;
+}
+.item li{
+    
+    
+    width: 60%;    
+    background: #fff;
+    margin-left: 9%;
+    margin-bottom: 10px;
+    padding:0.6%;
+    border-radius: 0.5%;
+    border-left: 10px solid rgb(8, 36, 73);
+   
+}
+.item li:hover{
+    
+    padding:1%;
+    cursor: pointer;
+
+}
+/* li添加之后里面的input框 */
+#liPut{
+    
+    width:50%;
+    cursor:text;
+    font-family:"arial";
+    font-size:22px;
+    border: rgb(255, 255, 255);
+    margin-left: 3%;
+    
+    
+}
+#doneList{
+    margin-top:5% ;
+}
+#textCount{
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(167, 176, 190);
+    position: fixed;
+    left: 180px;
+    bottom: 15px;
+    line-height: 20px;
+}
+#count{
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(213, 218, 226);
+    position: fixed;
+    left:260px ;
+    bottom: 15px;
+    
+}
+#todoCount,#doneCount{
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-color: rgb(30, 63, 116);
+    border-radius: 20px;
+    text-align: center;
+
+}
+
+
